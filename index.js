@@ -10,19 +10,21 @@ const authentication = require('./middleware/authentication')
 require('dotenv').config()
 const app = express();
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+   
+))
 
 app.get('/',(req,res)=>{
-    res.send("base route")
-})
-
+    res.send({msg:"base route"})
+}) 
+ 
 
 app.post('/signup',async(req,res)=>{
     const {email,password,mobileNo} = req.body;
     const found = await User.findOne({email:email})
     if(found!=null){
         res.send({msg:"email already registered"})
-    }
+    } 
     else{
         await bcrypt.hash(password, 5, function(err, hash) {
             const user =new User({
@@ -127,14 +129,14 @@ app.delete('/blog/delete/:blogId',authentication ,async(req,res)=>{
 
 
 
-app.listen('9090',async()=>{
+app.listen('5050',async()=>{
     try{
         await connection
         console.log("connected to DB Successfully")
     }
     catch(err){
-        console.log("Error while connecting to DB")
+        console.log("Error while connecting to DB") 
         console.log(err)
     }
-    console.log("listinig at 8080");
+    console.log("listinig at 5050");
 })
