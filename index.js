@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-app.get('/',(res,req)=>{
+app.get('/',(req,res)=>{
     res.send("base route")
 })
 
@@ -127,7 +127,7 @@ app.delete('/blog/delete/:blogId',authentication ,async(req,res)=>{
 
 
 
-app.listen('8080',async()=>{
+app.listen('9090',async()=>{
     try{
         await connection
         console.log("connected to DB Successfully")
