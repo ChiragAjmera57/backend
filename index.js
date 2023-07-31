@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const cores = require("cores")
+const cors = require("cors")
 
 const connection = require('./config/mongodb');
 const User = require('./models/user.model')
@@ -10,7 +10,7 @@ const authentication = require('./middleware/authentication')
 require('dotenv').config()
 const app = express();
 app.use(express.json())
-app.use(cores())
+app.use(cors())
 
 app.get('/',(res,req)=>{
     res.send("base route")
