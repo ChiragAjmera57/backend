@@ -12,7 +12,7 @@ app.use(express.json())
 
 
 app.get('/',(res,req)=>{
-    res.send({msg:"base route"})
+    res.send("base route")
 })
 
 
